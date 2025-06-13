@@ -6,4 +6,5 @@ data/
 venv/
 .dvc/
 .dvcignore
-.dvc/temp/
+.dvc/tmp/
+*.png
