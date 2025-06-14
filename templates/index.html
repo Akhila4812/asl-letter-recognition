@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ASL Letter Recognition</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; padding: 50px; background: #f0f0f0; }
+        h1 { color: #333; }
+        .container { max-width: 600px; margin: auto; background: white; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        .result { margin-top: 20px; font-size: 1.2em; color: #4CAF50; }
+        input[type="file"] { margin: 20px; }
+        button { padding: 10px 20px; background: #4CAF50; color: white; border: none; cursor: pointer; border-radius: 5px; }
+        button:hover { background: #45a049; }
+        img { max-width: 200px; margin-top: 20px; border: 2px solid #ddd; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>ASL Sign Language Letter Recognition</h1>
+        <form action="/predict" method="POST" enctype="multipart/form-data">
+            <input type="file" name="image" accept="image/*" required>
+            <button type="submit">Predict Letter</button>
+        </form>
+        {% if label %}
+        <div class="result">
+            <p>Predicted Letter: {{ label }}</p>
+            <p>Confidence: {{ confidence }}%</p>
+            {% if image_path %}
+            <p>Uploaded Image:</p>
+            <img src="{{ image_path }}" alt="Uploaded Image">
+            {% endif %}
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
